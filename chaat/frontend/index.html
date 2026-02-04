@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Онлайн чат</title>
+  <style>
+    :root {
+      --bg: #020617;
+      --panel: #1e293b;
+      --user: #38bdf8;
+      --bot: #94a3b8;
+      --text: #f8fafc;
+      --radius: 12px;
+      --font: 'Segoe UI', sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      height: 100vh;
+      font-family: var(--font);
+      background: linear-gradient(135deg, #020617, #0f172a);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: var(--text);
+    }
+    .chat-container {
+      width: 100%;
+      max-width: 420px;
+      height: 90vh;
+      background: var(--panel);
+      border-radius: var(--radius);
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 0 25px rgba(0,0,0,0.6);
+    }
+    .chat-header {
+      padding: 15px;
+      text-align: center;
+      font-weight: bold;
+      border-bottom: 1px solid #334155;
+    }
+    .chat-window {
+      flex: 1;
+      padding: 10px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .message {
+      max-width: 80%;
+      padding: 8px 12px;
+      border-radius: var(--radius);
+      animation: fadeIn 0.3s ease;
+    }
+    .message.user {
+      background: var(--user);
+      color: #020617;
+      align-self: flex-end;
+    }
+    .message.bot {
+      background: var(--bot);
+      color: #020617;
+      align-self: flex-start;
+    }
+    .typing {
+      display: none;
+      font-size: 14px;
+      padding-left: 15px;
+      color: var(--bot);
+    }
+    .chat-form {
+      display: flex;
+      gap: 5px;
+      padding: 10px;
+      border-top: 1px solid #334155;
+    }
+    .chat-form input {
+      flex: 1;
+      padding: 8px;
+      border-radius: var(--radius);
+      border: none;
+    }
+    .chat-form input:focus {
+      outline: 2px solid var(--user);
+    }
+    .chat-form button {
+      padding: 8px 12px;
+      border-radius: var(--radius);
+      border: none;
+      cursor: pointer;
+      background: var(--user);
+    }
+    .chat-form button:hover { opacity: 0.8; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(5px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @media (max-width: 480px) {
+      .chat-container { height: 100vh; border-radius: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="chat-container">
+    <div class="chat-header">💬 Онлайн-чат</div>
+    <div class="chat-window" id="chatWindow"></div>
+    <div class="typing" id="typingIndicator">Бот печатает...</div>
+    <form class="chat-form" id="chatForm">
+      <input type="text" id="messageInput" placeholder="Введите сообщение..." autocomplete="off">
+      <button type="submit">➤</button>
+      <button type="button" id="clearChat">🗑</button>
+    </form>
+  </div>
+
+  <!-- Интерфейс оставлен как в твоём файле. Логика вынесена в модуль (без изменений вёрстки/стилей). -->
+  <script type="module" src="./js/legacy_main.js"></script>
+</body>
+</html>
